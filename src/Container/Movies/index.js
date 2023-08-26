@@ -12,7 +12,7 @@ const MoviesContainer = () => {
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState(0);
 
-    const API_KEY = `c2fc8b3536fc1518f615203e0cab04c0`;
+    const API_KEY = process.env.REACT_APP_API_KEY;
     const URL_PATH = "https://api.themoviedb.org/3";
     const getDataTrending = async () => {
         const { data } = await axios.get(

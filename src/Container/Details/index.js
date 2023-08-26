@@ -8,12 +8,15 @@ import "./Details.css";
 
 import axios from "axios";
 import DarkVariantExample from "../../Components/Carousel";
+import SimilarMovies from "../../Components/SimilarMovies/SimilarMovies";
 
 const DetailsContainer = () => {
     const params = useParams();
     const [content, setContent] = useState();
     const [video, setVideo] = useState();
     const [credits, setCredits] = useState();
+    const [similarMovies, setSimilarMovies] = useState();
+    console.log("params", params);
 
     const id = params.movieid || "";
     const _media_type = params.mediatype || "";
@@ -47,6 +50,18 @@ const DetailsContainer = () => {
         }
     };
 
+    const fetchSimilar = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://api.themoviedb.org/3/${_media_type}/${id}/similar?api_key=${API_KEY}&language=en-US&page=1
+                `
+            );
+            setSimilarMovies(data.results);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const creditsFetch = async () => {
         try {
             const { data } = await axios.get(
@@ -62,6 +77,7 @@ const DetailsContainer = () => {
         fetchData();
         fetchVideo();
         creditsFetch();
+        fetchSimilar();
         //eslint-disable-next-line
     }, []);
 
@@ -205,6 +221,17 @@ const DetailsContainer = () => {
                     </Container>
                 </div>
             </section>
+            {/* <section className="section">
+                <div className="contentSimilarMovies">
+                    <Container>
+                        <Row>
+                            <Col className="col-12">
+                                <SimilarMovies data={similarMovies} />
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+            </section> */}
         </main>
     );
 };

@@ -9,7 +9,10 @@ const HeaderComponents = () => {
     const navData = [
         { name: "Movies", link: "./movies" },
         { name: "TV Series", link: "./series" },
-        { name: "Search", link: "/search" },
+        { name: "Popular", link: "./popular" },
+        { name: "Top Rate", link: "./topRate" },
+        { name: "Up Coming", link: "./upComing" },
+        { name: "Search", link: "./search" },
     ];
     return (
         <header className="header">

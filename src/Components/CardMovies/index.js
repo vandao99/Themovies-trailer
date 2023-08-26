@@ -15,63 +15,32 @@ const CardMoviesComponents = ({ data, mediaType }) => {
         ? img_300 + data.poster_path
         : img_not_available;
     const title = data.original_title || data.name;
-    const vote_average = parseInt(data.vote_average);
-    const original_language = data.original_language || "";
-    const release_date = new Date(
-        data.release_date || data.first_air_date
-    ).toLocaleDateString();
+    // const vote_average = parseInt(data.vote_average);
+    const vote_average = Math.round(data.vote_average);
+
+    // const original_language = data.original_language || "";
+    // const release_date = new Date(
+    //     data.release_date || data.first_air_date
+    // ).toLocaleDateString();
 
     return (
         <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
-            <Link to={`/details/${id}/${media_type}`} className="video-thumb">
-                <figure className="video-image">
-                    <span>
-                        <img src={ImageURL} alt={title} loading="lazy" />
-                    </span>
-                    <div className="circle-rate">
-                        <svg
-                            className="circle-chart"
-                            viewBox="0 0 30 30"
-                            width="100"
-                            height="100"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <circle
-                                className="circle-chart__background"
-                                stroke="#2f3439"
-                                strokeWidth="2"
-                                fill="none"
-                                cx="15"
-                                cy="15"
-                                r="14"
-                            ></circle>
-                            <circle
-                                className="circle-chart__circle"
-                                stroke="#4eb04b"
-                                strokeWidth="2"
-                                strokeDasharray={`${vote_average}0,100`}
-                                cx="15"
-                                cy="15"
-                                r="14"
-                            ></circle>
-                        </svg>
-                        <b>{vote_average}</b>
+            <div className="cards">
+                <Link to={`/details/${id}/${media_type}`}>
+                    <div className="video-thumb">
+                        <img className="card-img" src={ImageURL} alt={title} />
+                        <div className="card-content">
+                            <h3 className="card-name line-clamp">{title}</h3>
+                            <p className="genres">Action, Drama...</p>
+                            <h6>
+                                <span>IMDB</span>
+                                <i className="bi bi-star-fill"></i>
+                                {vote_average}
+                            </h6>
+                        </div>
                     </div>
-                    <div className="hd">
-                        {media_type}
-                        <b>{original_language}</b>
-                    </div>
-                </figure>
-                <div className="video-content">
-                    <small className="range">
-                        <span style={{ color: "#e77070", marginRight: "10px" }}>
-                            Release Date:
-                        </span>{" "}
-                        {release_date}
-                    </small>
-                    <h3 className="name">{title}</h3>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </div>
     );
 };

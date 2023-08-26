@@ -1,0 +1,64 @@
+.media-welcome {
+    top: -20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+}
+
+.media-welcome .hero-title {
+    position: absolute;
+    top: 60%;
+    left: 27.5%;
+}
+
+.media-welcome Img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.hero-title .title {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.hero-title .sub-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.searchInput {
+    display: flex;
+    align-items: center;
+}
+.searchInput input {
+    font-size: 16px;
+    padding: 0 30px;
+    width: 500px;
+    height: 50px;
+    border : 0;
+    outline: 0;
+    border-radius: 30px 0 0 30px;
+}
+.btn-search {
+    font-weight: bold;
+    font-size: 16px;
+    width: 100px;
+    color: white;
+    height: 50px;
+    outline: 0;
+    border: 0;
+    border-radius:  0 30px 30px 0;
+    padding: 0 20px;
+    background-color: #18ceb6;
+}

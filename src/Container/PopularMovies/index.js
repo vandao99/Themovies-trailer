@@ -7,17 +7,16 @@ import axios from "axios";
 import CardMoviesComponents from "../../Components/CardMovies";
 import PaginationComponent from "../../Components/Pagination";
 
-const TVSeriesContainer = () => {
+const PopularMoviesContainer = () => {
     const [content, setContent] = useState([]);
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState(0);
 
     const API_KEY = process.env.REACT_APP_API_KEY;
-
     const URL_PATH = "https://api.themoviedb.org/3";
     const getDataTrending = async () => {
         const { data } = await axios.get(
-            `${URL_PATH}/discover/tv?api_key=${API_KEY}&page=${page}`
+            `${URL_PATH}/movie/popular?api_key=${API_KEY}&page=${page}`
         );
         //set data
         setContent(data.results);
@@ -38,7 +37,7 @@ const TVSeriesContainer = () => {
                 <Row>
                     <Col className="col-12">
                         <section>
-                            <h1 className="txtCenter">TV Series For You </h1>
+                            <h1 className="txtCenter">Popular Movies </h1>
                         </section>
                     </Col>
                     {content && content.length > 0
@@ -47,7 +46,7 @@ const TVSeriesContainer = () => {
                                   <CardMoviesComponents
                                       key={index}
                                       data={item}
-                                      mediaType="tv"
+                                      mediaType="movie"
                                   />
                               );
                           })
@@ -65,4 +64,4 @@ const TVSeriesContainer = () => {
     );
 };
 
-export default TVSeriesContainer;
+export default PopularMoviesContainer;
